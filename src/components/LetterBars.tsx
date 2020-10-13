@@ -12,8 +12,9 @@ import { RadialGradient } from '@visx/gradient';
 // local vars
 const data = letterFrequency.slice(0); // include all a-z letters
 const verticalMargin = 20;
+console.log(`here's the mock data: ${JSON.stringify(data)}`);
 
-// accessor functions
+// accessor functions (with TS types for d3 accessor var d)
 const getLetter = (d: LetterFrequency) => d.letter;
 const getLetterFrequency = (d: LetterFrequency) => Number(d.frequency) * 100;
 
@@ -21,7 +22,7 @@ const getLetterFrequency = (d: LetterFrequency) => Number(d.frequency) * 100;
 export type BarProps = {
   width: number;
   height: number;
-  events?: boolean;
+  events?: boolean; // optional (via ?)
 };
 
 function LetterBars({ width, height, events = true }: BarProps) {
@@ -29,7 +30,7 @@ function LetterBars({ width, height, events = true }: BarProps) {
   const xMax = width;
   const yMax = height - verticalMargin;
 
-  // define d3 scales, use memoize for performance (cache)
+  // define d3 scales, useMemo for performance (cache)
   const xScale = useMemo(
     () =>
       scaleBand<string>({
