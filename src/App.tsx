@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <h1 className="app-title">Visx Bar Chart (not yet responsive) </h1>
-      {/* great d3-style props: width, height for svg  */}
+      {/* d3-style props: width, height for svg  */}
       <LetterBars width={320} height={400} />
     </div>
   );

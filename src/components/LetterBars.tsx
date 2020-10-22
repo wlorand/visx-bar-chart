@@ -13,7 +13,8 @@ import letterFrequency, {
 
 // local vars
 const data = letterFrequency.slice(0); // include all a-z letters - was slice(5) for demo
-const verticalMargin = 20;
+
+const margin = { top: 20 };
 console.log(`here's the mock data: ${JSON.stringify(data)}`);
 
 // accessor functions (with TS types for d3 accessor var d) -- data-driven!
@@ -32,9 +33,9 @@ export type BarProps = {
 // take in width and height as props
 function LetterBars({ width, height, events = true }: BarProps) {
   // define bounds
-  // be more d3 explicit with "this is margin convention" -- consider const margin: { ... }
+  // be more d3 explicit with "this is margin convention" -- did partial const margin: { ... }
   const xMax = width;
-  const yMax = height - verticalMargin;
+  const yMax = height - margin.top;
 
   // define d3 scales, also useMemo for performance (cache)
 
@@ -65,7 +66,7 @@ function LetterBars({ width, height, events = true }: BarProps) {
       {/* <GradientTealBlue id="teal" /> */}
       <RadialGradient id="blueStar" from="#55bdd5" to="#4f3681" r="80%" />
       <rect width={width} height={height} fill="url(#blueStar)" rx={14} />
-      <Group top={verticalMargin / 2}>
+      <Group top={margin.top / 2}>
         {data.map((d) => {
           const letter = getLetter(d);
           const barWidth = xScale.bandwidth();
