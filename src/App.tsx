@@ -9,9 +9,9 @@ import './app.css';
 function App() {
   return (
     <div>
-      <h1 className="app-title">Visx Bar Chart (not yet responsive) </h1>
+      <h1 className="app-title">Visx Bar Chart Take One</h1>
       {/* d3-style props: width, height for svg  */}
-      <LetterBars width={320} height={400} />
+      <LetterBars width={640} height={480} />
     </div>
   );
 }
